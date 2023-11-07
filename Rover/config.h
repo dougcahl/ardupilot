@@ -32,6 +32,19 @@
 #endif
 
 //////////////////////////////////////////////////////////////////////////////
+// RALLY POINTS
+//
+#ifndef AP_RALLY
+ #define AP_RALLY ENABLED
+#endif
+
+//////////////////////////////////////////////////////////////////////////////
+// Precision Landing with companion computer or IRLock sensor
+#ifndef PRECISION_LANDING
+ # define PRECISION_LANDING ENABLED
+#endif
+
+//////////////////////////////////////////////////////////////////////////////
 // NAVL1
 //
 #ifndef NAVL1
@@ -57,13 +70,7 @@
 //////////////////////////////////////////////////////////////////////////////
 // Dock mode - allows vehicle to dock to a docking target
 #ifndef MODE_DOCK_ENABLED
-# define MODE_DOCK_ENABLED AC_PRECLAND_ENABLED
-#endif
-
-//////////////////////////////////////////////////////////////////////////////
-// Follow mode - allows vehicle to follow target
-#ifndef MODE_FOLLOW_ENABLED
-# define MODE_FOLLOW_ENABLED AP_FOLLOW_ENABLED
+# define MODE_DOCK_ENABLED PRECISION_LANDING
 #endif
 
 
@@ -91,3 +98,6 @@
  #define OSD_ENABLED DISABLED
 #endif
 
+#ifndef LOIT_RADIUS_RATIO
+ # define LOIT_RADIUS_RATIO      2     // default value for my new parameter
+#endif
