@@ -16,8 +16,6 @@
 #include "AP_Torqeedo/AP_Torqeedo.h"
 #include <AP_WindVane/AP_WindVane.h>
 
-#define AP_PARAM_VEHICLE_NAME rover
-
 // Global parameter class.
 //
 class Parameters {
@@ -224,7 +222,6 @@ public:
         k_param_notify,
         k_param_button,
         k_param_osd,
-        k_param_optflow,
 
         k_param_logger = 253,  // Logging Group
 
@@ -312,16 +309,14 @@ public:
     AP_AdvancedFailsafe_Rover afs;
 #endif
 
-#if AP_BEACON_ENABLED
     AP_Beacon beacon;
-#endif
+
+    // Motor library
+    AP_MotorsUGV motors;
 
     // wheel encoders
     AP_WheelEncoder wheel_encoder;
     AP_WheelRateControl wheel_rate_control;
-
-    // Motor library
-    AP_MotorsUGV motors;
 
     // steering and throttle controller
     AR_AttitudeControl attitude_control;
@@ -360,10 +355,8 @@ public:
     // pitch/roll angle for crash check
     AP_Int8 crash_angle;
 
-#if AP_FOLLOW_ENABLED
     // follow mode library
     AP_Follow follow;
-#endif
 
     // frame type for vehicle (used for vectored motor vehicles and custom motor configs)
     AP_Int8 frame_type;
@@ -371,6 +364,8 @@ public:
     // loiter type
     AP_Int8 loit_type;
     AP_Float loit_radius;
+    AP_Float loit_radius_rat;
+    
 
 #if HAL_SPRAYER_ENABLED
     // Sprayer
@@ -381,10 +376,8 @@ public:
     AP_Gripper gripper;
 #endif
 
-#if HAL_RALLY_ENABLED
     // Rally point library
     AP_Rally_Rover rally;
-#endif
 
     // Simple mode types
     AP_Int8 simple_type;
@@ -434,16 +427,8 @@ public:
     // guided options bitmask
     AP_Int32 guided_options;
 
-    // manual mode options
+    // Rover options
     AP_Int32 manual_options;
-
-    // manual mode steering expo
-    AP_Float manual_steering_expo;
-
-    // FS GCS timeout trigger time
-    AP_Float fs_gcs_timeout;
-
-    class ModeCircle mode_circle;
 };
 
 extern const AP_Param::Info var_info[];
