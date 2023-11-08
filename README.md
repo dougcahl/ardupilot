@@ -1,3 +1,8 @@
+Updated Rover for loitering hold between two radiuses. The motors are shutoff between the two radiuses, allowing a free drifting platform with no noise introduced to measurements. New parameter "loit_radius_rat" controls the ratio of the inner radius (defined by loit_radius, as usual) to the outer radius, defined by loit_radius*loit_radius_rat
+
+Also includes a matlab Rover SITL simulation code available at https://github.com/dougcahl/ardupilot/blob/master/libraries/SITL/examples/JSON/MATLAB/Rover/SIM_rover.m
+This is a Rover sim (poorly hacked together from the coper sim code) for water with an ambient current. This allows the loiter updated code testing, so that the boat (Rover) goes near the inner radius, shuts off the motors and then drifts until outside the outside radius before turning the motors back on and heading back towards the inner radius.
+
 # ArduPilot Project
 
 <a href="https://ardupilot.org/discord"><img src="https://img.shields.io/discord/674039678562861068.svg" alt="Discord">
